@@ -24,3 +24,5 @@ Route::post('/landlord',[LandlordController::class,'store']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::resource('users',)->only('index','edit');
