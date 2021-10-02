@@ -8,10 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Lease extends Model
 {
     use HasFactory;
-    protected $fillable=[
-        'Full_name',
-        'Email',
-        'Address',
-        'NIN',
-    ];
 }

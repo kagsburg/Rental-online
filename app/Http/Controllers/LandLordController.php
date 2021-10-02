@@ -15,22 +15,23 @@ class LandLordController extends Controller
     {
         $this->landLordService = $landLordService;
     }
-
+//get all landlords
     public function getLandLords()
     {
         return $this->landLordService->getLandLords();
     }
-
+//get specific landlord
     public function getLandLord(LandLord $landLord): LandLordResource
     {
         return new LandLordResource($landLord);
     }
-
+//create new landlord 
     public function storeLandLord(Request $request){
+            return $this->landLordService->CreateLandlords($request);
 
     }
-
-    public function updateLandLord(){
-
+//update  landlord information
+    public function updateLandLord(Request $request, Landlord $id){
+        return $this->landLordService->UpdateLandlords($request,$id);
     }
 }

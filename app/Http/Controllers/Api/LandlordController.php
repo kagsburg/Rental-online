@@ -31,12 +31,7 @@ class LandlordController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $validator = Validator::make(
-        //     ['Full_name'=>'required'],
-        //     ['Email'=>'string|min:1|max:10'],
-        //     ['Address'=>'required'],
-        //     ['NIN'=>'required']);
+     
         $request->validate([
             'Full_name'=>'required',
             'Email'=>'string|string|max:255|email|unique:landlords,email',

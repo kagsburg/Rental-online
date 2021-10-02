@@ -15,6 +15,18 @@ class CreatePropertyUnitsTable extends Migration
     {
         Schema::create('property_units', function (Blueprint $table) {
             $table->id();
+            $table->string('Unit_title');
+            $table->string('Rent');
+            $table->string('Initial_deposit');
+            $table->string('status');
+            $table->string('description')->nullable();
+            $table->bigInteger('property_id')->unsigned()->index();
+            $table->bigInteger('Type_id')->unsigned()->index();
+            $table->foreign('property_id')->references('id')->on('properties');
+            $table->foreign('Type_id')->references('id')->on('property_types');
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+           
             $table->timestamps();
         });
     }

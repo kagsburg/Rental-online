@@ -18,11 +18,24 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'email',
+        'Full_name',
+        'Email',
         'password',
-        'role_id',
-        'created_by'
+        'role_id',   //admin,landlord,tenant
+        'created_by',
+        'NIN',
+        'Address',
+        'bank',
+        'bank_a/c_no',
+        'Occupation_place',
+        'Occupation_status',
+        'Emergency_contact_name',
+        'Emergency_contact',
+        'Unit_id',
+        'property_id',
+        'created_by',
+        'updated_by',
+
     ];
 
     /**

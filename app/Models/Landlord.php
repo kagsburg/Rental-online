@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Landlord extends Model
+class LandLord extends Model
 {
     use HasFactory;
-
-
-    protected $fillable=[
+    protected $fillable = [
         'Full_name',
         'Email',
         'Address',
