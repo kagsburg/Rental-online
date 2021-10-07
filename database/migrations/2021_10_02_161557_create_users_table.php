@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
     $table->string('Emergency_contact_name')->nullable();
     $table->string('Emergency_contact')->nullable();
     $table->bigInteger('Unit_id')->unsigned()->index()->nullable();
-    $table->bigInteger('property_id')->unsigned()->index();
+    $table->bigInteger('property_id')->unsigned()->index()->nullable();
     $table->foreign('Unit_id')->references('id')->on('property_units');
     $table->foreign('property_id')->references('id')->on('properties');
     $table->bigInteger('role_id')->unsigned()->index();

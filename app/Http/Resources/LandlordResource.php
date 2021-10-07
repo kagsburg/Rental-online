@@ -15,9 +15,7 @@ class LandLordResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'Full_name' => $this->Full_name,
-            'Email' => $this->Email,
-            'Address' => $this->Address,
+            'name' => $this->name,
 
         ];
     }

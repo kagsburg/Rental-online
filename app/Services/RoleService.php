@@ -32,7 +32,7 @@ class RoleService
     }
     public function destroy(Role $id){
         $id->delete();
-        return response(null, Response::HTTP_OK);
+        return response("Role Successfully Deleted", Response::HTTP_OK);
     }
 
 

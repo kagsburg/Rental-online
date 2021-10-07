@@ -9,9 +9,6 @@ class LandLord extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'Full_name',
-        'Email',
-        'Address',
-        'NIN',
+
     ];
 }

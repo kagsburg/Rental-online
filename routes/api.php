@@ -24,9 +24,9 @@ Route::post('/roles',[RoleController::class,'storeRoles']);//create
 //Route::apiResource('landlord', LandlordController::class);
 Route::get('/landlord', [LandlordController::class, 'getLandLords']);
 Route::get('/landlord/{landLord}', [LandlordController::class, 'getLandLord']);
-Route::delete('/landlord/{landlord}', [LandlordController::class, 'destroy']);
-Route::put('/landlord/{id}', [LandlordController::class, 'update']);
-Route::post('/landlord',[LandlordController::class,'storeLandLord']);
+Route::delete('/landlord/{id}', [LandlordController::class, 'deleteLandLord']);
+Route::put('/landlord/{id}', [LandlordController::class, 'updateLandLord']);
+Route::post('/landlord/',[LandlordController::class,'storeLandLord']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
