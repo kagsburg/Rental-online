@@ -9,7 +9,7 @@ class PropertyType extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'category_name',
         'description',
         'created_by'
     ];
