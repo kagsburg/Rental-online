@@ -18,7 +18,7 @@ class CreatePropertyUnitsTable extends Migration
             $table->string('Unit_title');
             $table->string('Rent');
             $table->string('Initial_deposit');
-            $table->string('status');
+            $table->bigInteger('status')->unsigned()->index();
             $table->string('description')->nullable();
             $table->bigInteger('property_id')->unsigned()->index();
             $table->bigInteger('Type_id')->unsigned()->index();

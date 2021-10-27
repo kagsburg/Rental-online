@@ -20,7 +20,7 @@ class CreatePropertiesTable extends Migration
             $table->bigInteger('landlord_id')->unsigned()->index();
             $table->string('Location');
             $table->bigInteger('Type_id')->unsigned()->index();
-            $table->string('status');
+            $table->bigInteger('status')->unsigned()->index();
             $table->string('description')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

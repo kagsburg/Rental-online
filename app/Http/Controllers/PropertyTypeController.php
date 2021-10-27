@@ -31,16 +31,16 @@ class PropertyTypeController extends Controller
         return $this->typeService-> createTypes($request);
 
     }
-// //get specific role
+// //get specific property type
 //     public function getType(Request $request){
 //             return $this->typeService->Create_Roles($request);
 
 //     }
-//update  role information
+//update  type information
     public function updateType(Request $request, PropertyType $id){
         return $this->typeService->updateTypes($request,$id);
     }
-//delete roles
+//delete property type
     public function deleteType(PropertyType $id){
         return $this ->typeService->destroy($id);
     }

@@ -10,7 +10,7 @@ use App\Services\RoleService;
 class RoleController extends Controller
 {
     //
-    private $roleService;
+  private $roleService;
 
     public function __construct(RoleService $roleService)
     {
@@ -38,5 +38,5 @@ class RoleController extends Controller
 //delete roles
     public function delete_role(Role $id){
         return $this ->roleService->destroy($id);
-    }
+    }  
 }

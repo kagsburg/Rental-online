@@ -10,13 +10,21 @@ class Property extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'rent_amount',
-        'location',
+        'Property_name',
+        'Rent_amount',
+        'landlord_id',
         'status',
+        'Location',
+        'Type_id',
         'description',
-        'property_type_id',
         'created_by'
     ];
 
+
+    public function Status()
+    {
+        return $this
+            ->belongsToMany('App\Models\PropertyStatus')
+            ->withTimestamps();
+    }
 }
