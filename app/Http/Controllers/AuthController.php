@@ -31,8 +31,16 @@ class AuthController extends Controller
         return response($response,201);
     }
     public function logout(Request $request){
-        $request->user()->tokens()->delete();
-        return [
-            'message'=>'Logged out'
-        ];}
+        if ($request->user()) { 
+            $request->user()->tokens()->delete();
+        }
+    
+        // auth('sanctum')->user()->tokens()->delete();
+        return response( [
+            'message'=>'User Logged out'
+        ],200);
+    }
+    public function validateApiToken(Request $request){
+        return response(['message'=>'User Logged in'],200);
+    }
 }

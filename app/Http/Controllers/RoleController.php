@@ -39,4 +39,7 @@ class RoleController extends Controller
     public function delete_role(Role $id){
         return $this ->roleService->destroy($id);
     }  
+    public function delete_all_role( $id){
+        return $this ->roleService->destroyAll($id);
+    } 
 }

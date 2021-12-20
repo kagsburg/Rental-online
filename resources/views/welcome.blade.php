@@ -24,7 +24,7 @@
             }
         </style>
     </head>
-    <body class="theme-red">
+    <body >
         {{-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -135,6 +135,6 @@
         <div id="example"></div>
 
         <script src="{{mix('js/app.js')}}"></script>
-        <script src="resources/js/components/plugins/bootstrap/js/bootstrap.js"></script>
+        
     </body>
 </html>

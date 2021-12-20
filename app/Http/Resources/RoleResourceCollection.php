@@ -14,6 +14,9 @@ class RoleResourceCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->collection;
+        return [
+            'data' => $this->collection,
+            
+        ]; 
     }
 }

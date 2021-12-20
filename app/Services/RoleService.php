@@ -12,8 +12,9 @@ class RoleService
 {
 
     public function get_Roles(){
-
-        return new RoleResourceCollection(Role::all());
+         return new RoleResourceCollection(Role::all());
+        // $data['data']= $coolection->sortByDesc('id');
+        // return $data;
     }
     public function Create_Roles(Request $request){
         
@@ -33,6 +34,20 @@ class RoleService
     public function destroy(Role $id){
         $id->delete();
         return response("Role Successfully Deleted", Response::HTTP_OK);
+    }
+    public function destroyAll($id){
+        try {
+                
+            $ids = explode(",", $id);
+            //print_r($ids);
+            //$ids is a Array with the primary keys
+            Role::destroy($ids);
+            return response("Roles Successfully Deleted", Response::HTTP_OK);
+        }
+        catch(\Exception $e) {
+            return $e->getMessage();
+        }
+
     }
 
 

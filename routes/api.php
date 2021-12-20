@@ -26,12 +26,7 @@ Route::delete('/status/{id}', [PropertyStatusController::class, 'deleteStatus'])
 Route::put('/status/{id}', [PropertyStatusController::class, 'updateStatus']);//update
 Route::post('/status',[PropertyStatusController::class,'storeStatus']);//create
 
-//user role routes
-Route::get('/roles', [RoleController::class, 'getRoles']);//get all
-Route::get('/roles/{id}', [RoleController::class, 'getRole']);//get with id
-Route::delete('/roles/{id}', [RoleController::class, 'delete_role']);//delete
-Route::put('/roles/{id}', [RoleController::class, 'update_role']);//update
-Route::post('/roles',[RoleController::class,'storeRoles']);//create
+
 
 // Route::get('/landlord',[LandlordResource::class,all()]);
     // property_type routes
@@ -54,15 +49,25 @@ Route::post('/types',[PropertyTypeController::class,'storeType']);//create
    // Route::post('/landlord/',[LandlordController::class,'storeLandLord']);
 
 // };
+Route::get('/landlord', [LandlordController::class, 'getLandLords']);
+Route::get('/landlord/{landLord}', [LandlordController::class, 'getLandLord']);
+Route::delete('/landlord/{id}', [LandlordController::class, 'deleteLandLord']);
+Route::put('/landlord/{id}', [LandlordController::class, 'updateLandLord']);
+Route::post('/landlord/',[LandlordController::class,'storeLandLord']);
+
+
 Route::group(['middleware'=>['auth:sanctum']], function () {
+    //user role routes
+    Route::get('/roles', [RoleController::class, 'getRoles']);//get all
+    Route::get('/roles/{id}', [RoleController::class, 'getRole']);//get with id
+    Route::delete('/roles/{id}', [RoleController::class, 'delete_role']);//delete
+    Route::delete('/Allroles/{id}', [RoleController::class, 'delete_all_role']);//delete
+    Route::put('/roles/{id}', [RoleController::class, 'update_role']);//update
+    Route::post('/roles',[RoleController::class,'storeRoles']);//create
+    //check the token is 
+    Route::get('/ValidateToken', [AuthController::class, 'validateApiToken']);
     //landlord routes
-    Route::get('/landlord', [LandlordController::class, 'getLandLords']);
-    Route::get('/landlord/{landLord}', [LandlordController::class, 'getLandLord']);
-    Route::delete('/landlord/{id}', [LandlordController::class, 'deleteLandLord']);
-    Route::put('/landlord/{id}', [LandlordController::class, 'updateLandLord']);
-    Route::post('/landlord/',[LandlordController::class,'storeLandLord']);
-    
-     Route::post('/logout',[AuthController::class,'logout']);
+    Route::post('/logout',[AuthController::class,'logout']);
  });
 
 //Route::resource('users',)->only('index','edit');
