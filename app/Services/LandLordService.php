@@ -9,7 +9,6 @@ use App\Http\Resources\UserCollection;
 use App\Models\LandLord;
 use App\Models\Role;
 use App\Models\User;
-
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;

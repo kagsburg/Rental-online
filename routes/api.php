@@ -6,6 +6,7 @@ use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\PropertyController; 
 use App\Http\Controllers\PropertyStatusController; 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -54,6 +55,8 @@ Route::get('/landlord/{landLord}', [LandlordController::class, 'getLandLord']);
 Route::delete('/landlord/{id}', [LandlordController::class, 'deleteLandLord']);
 Route::put('/landlord/{id}', [LandlordController::class, 'updateLandLord']);
 Route::post('/landlord/',[LandlordController::class,'storeLandLord']);
+Route::post('/user/',[UserController::class,'storeUser']);
+Route::get('/user',[UserController::class,'getAllUsers']);
 
 
 Route::group(['middleware'=>['auth:sanctum']], function () {

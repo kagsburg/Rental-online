@@ -37,7 +37,8 @@ class LandLordController extends Controller
     public function updateLandLord(Request $request, User $id){
         return $this->landLordService->UpdateLandlords($request,$id);
     }
-//destory User LandLord
+    
+    //destory User LandLord
     
     
     /**
