@@ -19,16 +19,16 @@ class UserService
             'NIN'=>'required',
             'password'=>'required'
         ]);
-       
-        $ole= $role->id;
-        $user =User::create([
-            'Full_name'=>$request->Full_name,
-            'Email'=>$request->Email,
-            'NIN'=>$request->NIN,
-            'password'=>$request->password,
-            'role_id'=>$ole
-        ]);
-            return (new UserResource($user))->response()->setStatusCode(Response::HTTP_CREATED);
+       echo ($role);
+        // $ole= $role->id;
+        // $user =User::create([
+        //     'Full_name'=>$request->Full_name,
+        //     'Email'=>$request->Email,
+        //     'NIN'=>$request->NIN,
+        //     'password'=>$request->password,
+        //     'role_id'=>$ole
+        // ]);
+        //     return (new UserResource($user))->response()->setStatusCode(Response::HTTP_CREATED);
 
     }
     public function GetAllUsers (){
