@@ -13,7 +13,7 @@ class AuthController extends Controller
     //
     public function login(Request $request){
         $fields = $request->validate([
-            'email'=>'required|string',
+            'Email'=>'required|string',
             'password'=>'required|string'
         ]);
         $user =User::where('email',$fields['email'])->first();

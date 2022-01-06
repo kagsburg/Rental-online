@@ -15,7 +15,7 @@ class UserService
         $role= Role::find(3);
         $request->validate([
             'Full_name'=>'required',
-            'Email'=>'string|string|max:255|email|unique:users,email',
+            'Email'=>'string|string|max:255|Email|unique:users,Email',
             'NIN'=>'required',
             'password'=>'required'
         ]);
