@@ -67,13 +67,13 @@ Route::get('/user',[UserController::class,'getAllUsers']);
 
 Route::group(['middleware'=>['auth:sanctum']], function () {
     //user role routes
-    Route::get('/roles', [RoleController::class, 'getRoles']);//get all
-    Route::get('/roles/{id}', [RoleController::class, 'getRole']);//get with id
-    Route::delete('/roles/{id}', [RoleController::class, 'delete_role']);//delete
-    Route::delete('/Allroles/{id}', [RoleController::class, 'delete_all_role']);//delete
-    Route::put('/roles/{id}', [RoleController::class, 'update_role']);//update
-    Route::post('/roles',[RoleController::class,'storeRoles']);//create
-    //check the token is 
+    // Route::get('/roles', [RoleController::class, 'getRoles']);//get all
+    // Route::get('/roles/{id}', [RoleController::class, 'getRole']);//get with id
+    // Route::delete('/roles/{id}', [RoleController::class, 'delete_role']);//delete
+    // Route::delete('/Allroles/{id}', [RoleController::class, 'delete_all_role']);//delete
+    // Route::put('/roles/{id}', [RoleController::class, 'update_role']);//update
+    // Route::post('/roles',[RoleController::class,'storeRoles']);//create
+    // //check the token is 
     Route::get('/ValidateToken', [AuthController::class, 'validateApiToken']);
     //landlord routes
     Route::post('/logout',[AuthController::class,'logout']);
