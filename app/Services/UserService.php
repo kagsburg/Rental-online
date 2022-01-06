@@ -19,7 +19,7 @@ class UserService
             'NIN'=>'required',
             'password'=>'required'
         ]);
-       echo ($role);
+       printf ($role);
         // $ole= $role->id;
         // $user =User::create([
         //     'Full_name'=>$request->Full_name,
