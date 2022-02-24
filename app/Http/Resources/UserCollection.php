@@ -16,4 +16,8 @@ class UserCollection extends ResourceCollection
     {
         return $this->collection;
     }
+    public function with($request)
+    {
+        return ['status' => 'success'];
+    }
 }

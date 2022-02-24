@@ -3,6 +3,7 @@
 
 namespace App\Services;
 use App\Models\Role;
+use App\Models\RoleUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -27,6 +28,10 @@ class UserService
             'NIN'=>$request->NIN,
             'password'=>$request->password,
             'role_id'=>$ole
+        ]);
+        $role = RoleUser::create([
+            'role_id'=>$ole,
+            'user_id'=>$user->id
         ]);
             return (new UserResource($user))->response()->setStatusCode(Response::HTTP_CREATED);
 

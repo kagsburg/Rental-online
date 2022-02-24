@@ -48,7 +48,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    protected $with = ['roles'];
     /**
      * The attributes that should be cast.
      *
@@ -70,10 +70,11 @@ class User extends Authenticatable
         }
         $this->attributes['password']=Hash::make($password);
     }
+  /**
+     * The roles that belong to the user.
+     */
     public function roles()
     {
-        return $this
-            ->belongsToMany('App\Models\Role')
-            ->withTimestamps();
+        return $this->belongsToMany(Role::class);
     }
 }
