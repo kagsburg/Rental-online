@@ -19,8 +19,9 @@ class Role extends Model
     /**
      * The users that belong to the role.
      */
-    public function users()
+   //creating foreign key relationship
+    public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany('App\Models\User');
     }
 }

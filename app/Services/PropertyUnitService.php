@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use App\Http\Resources\PropertyUnitCollection;
 use App\Http\Resources\PropertyUnitResource;
 
+
 class PropertyUnitService
 {
     public function CreateDefaultUser(Request $request){
@@ -29,10 +30,7 @@ class PropertyUnitService
             'password'=>$request->password,
             'role_id'=>$ole
         ]);
-        $role = RoleUser::create([
-            'role_id'=>$ole,
-            'user_id'=>$user->id
-        ]);
+       
             return (new UserResource($user))->response()->setStatusCode(Response::HTTP_CREATED);
 
     }

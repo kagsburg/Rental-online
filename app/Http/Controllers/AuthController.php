@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\UserResource;
+
 
 class AuthController extends Controller
 {
@@ -28,10 +30,10 @@ class AuthController extends Controller
         }
         $token = $user->createToken('myapptoken')->plainTextToken;
         $response=[
-            'user'=>$user,
+            'user'=>new UserResource($user),
             'token'=>$token
         ];
-        return response($response,201);
+        return response($response)->setStatusCode(Response::HTTP_OK);
     }
     public function logout(Request $request){
         if ($request->user()) { 

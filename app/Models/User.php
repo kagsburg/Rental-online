@@ -48,7 +48,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-    protected $with = ['roles'];
+    // protected $with = ['roles'];
     /**
      * The attributes that should be cast.
      *
@@ -73,9 +73,8 @@ class User extends Authenticatable
   /**
      * The roles that belong to the user.
      */
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
+    public function role(){
+        return $this->belongsTo('App\Models\Role','role_id');
     }
     public function property(){
         return $this->hasMany('App\Models\Property')
