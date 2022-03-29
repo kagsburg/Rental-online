@@ -4,6 +4,7 @@ use App\Http\Controllers\LandlordController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PropertyTypeController; 
 use App\Http\Controllers\PropertyController; 
+use App\Http\Controllers\PropertyUnitController; 
 use App\Http\Controllers\PropertyStatusController; 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -39,11 +40,17 @@ Route::post('/types',[PropertyTypeController::class,'storeType']);//create
  // property routes
  Route::get('/property', [PropertyController::class, 'getAll']);//get all
  Route::get('/property/{id}', [PropertyController::class, 'getOneProperty']);//get with id
+ Route::get('/landlordproperty/{id}', [PropertyController::class, 'getPropertyPerLandlord']);//get with id
  Route::delete('/property/{id}', [PropertyController::class, 'deleteProperty']);//delete
  Route::put('/property/{id}', [PropertyController::class, 'updateProperty']);//update
  Route::post('/property',[PropertyController::class,'storeProperty']);//create
-//Route::apiResource('landlord', LandlordController::class);
-
+ // property unit routes
+ Route::get('/propertyunit', [PropertyUnitController::class, 'getAllPropertyUnits']);//get all
+ Route::get('/propertyunit/{id}', [PropertyUnitController::class, 'getOnePropertyUnit']);//get with id
+ Route::get('/landlordproperty/{id}', [PropertyUnitController::class, 'getPropertyPerLandlord']);//get with id
+ Route::delete('/propertyunit/{id}', [PropertyUnitController::class, 'deletePropertyUnit']);//delete
+ Route::put('/propertyunit/{id}', [PropertyUnitController::class, 'updatePropertyUnit']);//update
+ Route::post('/propertyunit',[PropertyUnitController::class,'createPropertyUnit']);//create
 // Route::group(['middleware'=>['auth:sanctum']]), function () {
     //login route
     Route::post('/signin',[AuthController::class,'login']);

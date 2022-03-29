@@ -77,4 +77,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+    public function property(){
+        return $this->hasMany('App\Models\Property')
+             ->withTimestamps();
+    }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class PropertyCollection extends ResourceCollection
+class PropertyUnitCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -12,11 +12,9 @@ class PropertyCollection extends ResourceCollection
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public $collects = 'App\Http\Resources\PropertyResource';
     public function toArray($request)
     {
-        return $this->collection;
-
+        return parent::toArray($request);
     }
     public function with($request)
     {

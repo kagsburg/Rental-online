@@ -13,4 +13,8 @@ class PropertyType extends Model
         'description',
         'created_by'
     ];
+    
+    public function property(){
+        return $this->hasMany('App\Models\Property');
+    }
 }

@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use App\Http\Resources\PropertyResource;
 use App\Http\Resources\PropertyCollection;
 use App\Models\PropertyStatus;
+use App\Models\User;
 
 class PropertyService
 {
@@ -37,6 +38,10 @@ class PropertyService
         ]);
             return (new PropertyResource($user))->response()->setStatusCode(Response::HTTP_CREATED);
 
+    }
+    public function getLandlordProperty(User $id){
+        $land=Property::where('landlord_id','=',$id->id)->get();
+        return new PropertyCollection($land);
     }
     public function updateProperty(Request $request, Property $id){
         $landl = new PropertyResource($id);

@@ -9,6 +9,6 @@ class LandLord extends Model
 {
     use HasFactory;
     protected $fillable = [
-
     ];
+   
 }

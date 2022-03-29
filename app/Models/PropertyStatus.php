@@ -18,4 +18,9 @@ class PropertyStatus extends Model
     public function Property() {
         return $this->hasMany('App\Models\Property');
     }
+    public function PropertyUnit(){
+        return $this->hasMany('App\Models\PropertyUnit')
+             ->withTimestamps();
+    }
+
 }

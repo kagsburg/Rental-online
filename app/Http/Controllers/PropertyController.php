@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\PropertyService;
 use App\Http\Resources\PropertyResource;
 use App\Models\Property;
+use App\Models\User;
 
 class PropertyController extends Controller
 {
@@ -26,16 +27,14 @@ class PropertyController extends Controller
     {
         return new PropertyResource($id);
     }
+    public function getPropertyPerLandlord (User $id){
+        return $this->propertyService->getLandlordProperty($id);
+    }
 //add new type
     public function storeProperty(Request $request){
         return $this->propertyService-> createProperty($request);
 
     }
-// //get specific property type
-//     public function getType(Request $request){
-//             return $this->typeService->Create_Roles($request);
-
-//     }
 //update  type information
     public function updateProperty(Request $request, Property $id){
         return $this->propertyService->updateProperty($request,$id);
