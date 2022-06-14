@@ -12,7 +12,7 @@ class PropertyUnit extends Model
     protected $fillable = [
         'Unit_title',
         'Rent',
-        'initial_deposit',
+        'Initial_deposit',
         'status',
         'description',
         'property_id',

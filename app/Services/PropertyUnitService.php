@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\PropertyUnitCollection;
 use App\Http\Resources\PropertyUnitResource;
-
+use Laravel\Sanctum\PersonalAccessToken;
 
 class PropertyUnitService
 {
@@ -35,16 +35,24 @@ class PropertyUnitService
 
     }
     //getting all property units
-    public function GetAllUnits (){
-        return new PropertyUnitCollection(PropertyUnit::all());
+    public function GetAllUnits ($request){
+         //getting landlord id from token
+         $token = PersonalAccessToken::findToken($request->bearerToken());
+         $user= $token->tokenable;
+         $result = PropertyUnit::where('created_by','=',$user->id)->get();
+         return new PropertyUnitCollection($result);
+        // return new (PropertyUnit::all());
     }
     //creating a new property unit
     public function CreateUnit (Request $request){
+         //getting landlord id from token
+         $token = PersonalAccessToken::findToken($request->bearerToken());
+         $user= $token->tokenable;
         //validate the request
         $request->validate([
             'Unit_title'=>'required',
             'Rent'=>'required',
-            'initial_deposit'=>'required',
+            'Initial_deposit'=>'required',
             'status'=>'required',
             'property_id'=>'required',
         ]);
@@ -53,10 +61,10 @@ class PropertyUnitService
             'Unit_title'=>$request->Unit_title,
             'Rent'=>$request->Rent,
             'status'=>$request->status,
-            'initial_deposit'=>$request->initial_deposit,
+            'Initial_deposit'=>$request->Initial_deposit,
             'description'=>$request->description,
             'property_id'=>$request->property_id,
-            'created_by'=>$request->created_by
+            'created_by'=>$user->id
         ]);
         //return the newly created property unit
         return (new PropertyUnitResource($unit))->response()->setStatusCode(Response::HTTP_CREATED);

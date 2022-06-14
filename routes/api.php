@@ -7,8 +7,8 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\PropertyUnitController; 
 use App\Http\Controllers\PropertyStatusController; 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LeaseController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,7 +40,7 @@ Route::post('/types',[PropertyTypeController::class,'storeType']);//create
  // property routes
  Route::get('/property', [PropertyController::class, 'getAll']);//get all
  Route::get('/property/{id}', [PropertyController::class, 'getOneProperty']);//get with id
- Route::get('/landlordproperty/{id}', [PropertyController::class, 'getPropertyPerLandlord']);//get with id
+ Route::get('/landlordproperty', [PropertyController::class, 'getPropertyPerLandlord']);//get with id
  Route::delete('/property/{id}', [PropertyController::class, 'deleteProperty']);//delete
  Route::put('/property/{id}', [PropertyController::class, 'updateProperty']);//update
  Route::post('/property',[PropertyController::class,'storeProperty']);//create
@@ -53,7 +53,7 @@ Route::post('/types',[PropertyTypeController::class,'storeType']);//create
  Route::post('/propertyunit',[PropertyUnitController::class,'createPropertyUnit']);//create
 // Route::group(['middleware'=>['auth:sanctum']]), function () {
     //login route
-    Route::post('/signin',[AuthController::class,'login']);
+    Route::post('/login',[AuthController::class,'login']);
    // Route::post('/landlord/',[LandlordController::class,'storeLandLord']);
 
 // };
@@ -63,23 +63,25 @@ Route::delete('/landlord/{id}', [LandlordController::class, 'deleteLandLord']);
 Route::put('/landlord/{id}', [LandlordController::class, 'updateLandLord']);
 Route::post('/landlord/',[LandlordController::class,'storeLandLord']);
 Route::post('/user/',[UserController::class,'storeUser']);
-Route::get('/user',[UserController::class,'getAllUsers']);
- //user role routes
+Route::get('/user/',[UserController::class,'getAllUsers']);
+Route::post('/user_role/{id}',[UserController::class,'setNewRole']);
+
+Route::group(['middleware'=>['auth:sanctum']], function () {
+        
+     //user role routes
  Route::get('/roles', [RoleController::class, 'getRoles']);//get all
  Route::get('/roles/{id}', [RoleController::class, 'getRole']);//get with id
  Route::delete('/roles/{id}', [RoleController::class, 'delete_role']);//delete
  Route::delete('/Allroles/{id}', [RoleController::class, 'delete_all_role']);//delete
  Route::put('/roles/{id}', [RoleController::class, 'update_role']);//update
  Route::post('/roles',[RoleController::class,'storeRoles']);//create
-
-Route::group(['middleware'=>['auth:sanctum']], function () {
-    //user role routes
-    // Route::get('/roles', [RoleController::class, 'getRoles']);//get all
-    // Route::get('/roles/{id}', [RoleController::class, 'getRole']);//get with id
-    // Route::delete('/roles/{id}', [RoleController::class, 'delete_role']);//delete
-    // Route::delete('/Allroles/{id}', [RoleController::class, 'delete_all_role']);//delete
-    // Route::put('/roles/{id}', [RoleController::class, 'update_role']);//update
-    // Route::post('/roles',[RoleController::class,'storeRoles']);//create
+ //lease routes
+ Route::get('/roles', [RoleController::class, 'getRoles']);//get all
+ Route::get('/landlordleases/', [LeaseController::class, 'Landlordleases']);//get with id
+ Route::delete('/roles/{id}', [RoleController::class, 'delete_role']);//delete
+ Route::delete('/Allroles/{id}', [RoleController::class, 'delete_all_role']);//delete
+ Route::put('/roles/{id}', [RoleController::class, 'update_role']);//update
+ Route::post('/leases',[LeaseController::class,'AddNewLeases']);//create
     // //check the token is 
     Route::get('/ValidateToken', [AuthController::class, 'validateApiToken']);
     //landlord routes

@@ -31,10 +31,10 @@ class Property extends Model
         return $this->hasMany('App\Models\PropertyUnit')
              ->withTimestamps();
     }
-    // public function Status()
-    // {
-    //     return $this
-    //         ->belongsToMany('App\Models\PropertyStatus')
-    //         ->withTimestamps();
-    // }
+    public function Status()
+    {
+        return $this
+            ->belongsTo('App\Models\PropertyStatus','status')
+            ->withTimestamps();
+    }
 }

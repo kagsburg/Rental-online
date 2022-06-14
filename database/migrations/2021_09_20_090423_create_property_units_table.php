@@ -21,9 +21,9 @@ class CreatePropertyUnitsTable extends Migration
             $table->bigInteger('status')->unsigned()->index();
             $table->string('description')->nullable();
             $table->bigInteger('property_id')->unsigned()->index();
-            $table->bigInteger('Type_id')->unsigned()->index();
+            // $table->bigInteger('Type_id')->unsigned()->index();
             $table->foreign('property_id')->references('id')->on('properties');
-            $table->foreign('Type_id')->references('id')->on('property_types');
+            // $table->foreign('Type_id')->references('id')->on('property_types');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
            

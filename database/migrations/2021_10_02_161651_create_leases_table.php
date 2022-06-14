@@ -19,6 +19,9 @@ class CreateLeasesTable extends Migration
             $table->bigInteger('unit_id')->unsigned()->index();
             $table->bigInteger('tenant_id')->unsigned()->index();
             $table->string('status');
+            $table->date('lease_start');
+            $table->date('lease_end');
+            $table->text('document')->nullable();
             $table->foreign('type_id')->references('id')->on('property_types');
             $table->foreign('unit_id')->references('id')->on('property_units');
             $table->foreign('tenant_id')->references('id')->on('users');

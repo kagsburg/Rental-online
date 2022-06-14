@@ -30,6 +30,7 @@ class AuthController extends Controller
         }
         $token = $user->createToken('myapptoken')->plainTextToken;
         $response=[
+            'status'=>'success',
             'user'=>new UserResource($user),
             'token'=>$token
         ];

@@ -18,12 +18,12 @@ class PropertyUnitResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'UnitTitle' => $this->Unit_title,
-            'RentAmt' => $this->Rent,
-            'UnitStatus' => $this->status ? PropertyStatus::find($this->status)->first(['status_name'])->status_name : '',
-            'initialDeposit' => $this->initial_deposit,
+            'Unit_title' => $this->Unit_title,
+            'Rent' => $this->Rent,
+            'status' => $this->status ? PropertyStatus::find($this->status)->status_name : '',
+            'initial_deposit' => $this->initial_deposit,
             'description' => $this->description,
-            'propertyName' =>$this->property_id ? Property::find($this->property_id)->first(['Property_name'])->Property_name: '',  
+            'propertyName' =>$this->property_id ? Property::find($this->property_id)->Property_name: '',  
 
         ];
     }

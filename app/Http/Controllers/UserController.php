@@ -18,6 +18,10 @@ class UserController extends Controller
     public function storeUser(Request $request){
         return $this->userService->CreateDefaultUser($request);
     }
+    //update user's role
+    public function setNewRole(Request $request, User $id){
+        return $this->userService->setUserRole($request, $id);
+    }
     public function getAllUsers(){
         return $this->userService->GetAllUsers();
 

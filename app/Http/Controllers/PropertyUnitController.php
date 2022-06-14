@@ -18,9 +18,9 @@ class PropertyUnitController extends Controller
         $this->propertyUnitService = $propertyUnitService;
     }
         //get all property Units
-        public function getAllPropertyUnits()
+        public function getAllPropertyUnits(Request $request)
         {
-            return $this->propertyUnitService->GetAllUnits();
+            return $this->propertyUnitService->GetAllUnits($request);
         }
         //create new property unit
         public function createPropertyUnit(Request $request){

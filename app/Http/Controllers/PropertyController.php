@@ -27,8 +27,8 @@ class PropertyController extends Controller
     {
         return new PropertyResource($id);
     }
-    public function getPropertyPerLandlord (User $id){
-        return $this->propertyService->getLandlordProperty($id);
+    public function getPropertyPerLandlord (Request $request){
+        return $this->propertyService->getLandlordProperty($request);
     }
 //add new type
     public function storeProperty(Request $request){

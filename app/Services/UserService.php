@@ -4,6 +4,7 @@
 namespace App\Services;
 use App\Models\Role;
 use App\Models\User;
+use App\Events\RegisterUser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Resources\UserResource;
@@ -29,12 +30,19 @@ class UserService
             'password'=>$request->password,
             'role_id'=>$ole
         ]);
-        
+        // event to notify the landlord of new registered user  
+        event(new RegisterUser($user));
             return (new UserResource($user))->response()->setStatusCode(Response::HTTP_CREATED);
 
     }
     public function GetAllUsers (){
         return new UserCollection(User::all());
+    }
+    //update user's role 
+    public function setUserRole(Request $request, User $id){
+        $id->role_id=$request->role_id;
+        $id->save();
+        return new UserResource($id);
     }
     public function UpdateUser(Request $request, User $id){
         $landl = new UserResource($id);
