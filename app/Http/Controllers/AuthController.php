@@ -19,8 +19,16 @@ class AuthController extends Controller
             'password'=>'required|string'
         ]);
         $user =User::where('Email',$fields['Email'])->first();
+        if (!$user) {
+            $response=[
+                'statusCode'=>401,
+                'message'=>'Invalid User',
+                
+            ];
+            return response($response);
+        }
 
-        if(!$user ||!Hash::check($fields['password'],$user->password)){
+        if(!Hash::check($fields['password'],$user->password)){
             $response=[
                 'statusCode'=>401,
                 'message'=>'Invalid Password or Email',
