@@ -23,7 +23,7 @@ class LandLordService
         $role= Role::find(2);
         $request->validate([
             'Full_name'=>'required',
-            'Email'=>'string|string|max:255|email|unique:users,email',
+            'Email'=>'string|string|max:255|email|unique:users,Email',
             'Address'=>'required',
             'NIN'=>'required',
             'password'=>'required'
