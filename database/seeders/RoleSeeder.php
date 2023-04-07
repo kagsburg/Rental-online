@@ -16,7 +16,7 @@ class RoleSeeder extends Seeder
     {
         //
         Role::create([
-            'role_name' => 'System Admin',
+            'role_name' => 'Admin',
             'description' =>'this is the administer of the system',
         ]);
     }

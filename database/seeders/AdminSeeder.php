@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
             'Full_name' => 'kaganzi timothy',
             'Email' =>'kagsburg@mail.com',
             'role_id'=> 1,
-            'password' => Hash::make('12345678'),
+            'password' => '$2y$10$0mK5UcIKrL8.tL26QRgRVuMblo6Ku4gZunHdO.C8n.01l1LhkrHni',
         ]);
     }
 }
