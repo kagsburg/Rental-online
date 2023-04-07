@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\LandlordController;
+use App\Http\Controllers\LandLordController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PropertyTypeController; 
 use App\Http\Controllers\PropertyController; 
@@ -57,11 +57,11 @@ Route::post('/types',[PropertyTypeController::class,'storeType']);//create
  Route::get('/property_unit/{property_id}', [PropertyUnitController::class, 'getUnitsPerProperty']);//get all property units per given property
 Route::post('/signin',[AuthController::class,'login']);
 
-Route::get('/landlord', [LandlordController::class, 'getLandLords']);
-Route::get('/landlord/{landLord}', [LandlordController::class, 'getLandLord']);
-Route::delete('/landlord/{id}', [LandlordController::class, 'deleteLandLord']);
-Route::put('/landlord/{id}', [LandlordController::class, 'updateLandLord']);
-Route::post('/landlord/',[LandlordController::class,'storeLandLord']);
+Route::get('/landlord', [LandLordController::class, 'getLandLords']);
+Route::get('/landlord/{landLord}', [LandLordController::class, 'getLandLord']);
+Route::delete('/landlord/{id}', [LandLordController::class, 'deleteLandLord']);
+Route::put('/landlord/{id}', [LandLordController::class, 'updateLandLord']);
+Route::post('/landlord/',[LandLordController::class,'storeLandLord']);
 Route::post('/user/',[UserController::class,'storeUser']);
 Route::get('/user/',[UserController::class,'getAllUsers']);
 Route::post('/user_role/{id}',[UserController::class,'setNewRole']);
