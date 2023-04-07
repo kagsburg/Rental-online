@@ -64,12 +64,12 @@ class User extends Authenticatable
      * @param User $password
      * @return void
      */
-    public function setPasswordAttribute($password){
-        if(trim($password)==='' ){
-            return;
-        }
-        $this->attributes['password']=Hash::make($password);
-    }
+    // public function setPasswordAttribute($password){
+    //     if(trim($password)==='' ){
+    //         return;
+    //     }
+    //     $this->attributes['password']=Hash::make($password);
+    // }
   /**
      * The roles that belong to the user.
      */

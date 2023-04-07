@@ -19,22 +19,12 @@ class AuthController extends Controller
             'password'=>'required|string'
         ]);
         $user =User::where('Email',$fields['Email'])->first();
-        if (!$user) {
-            $response=[
-                'statusCode'=>401,
-                'message'=>'Invalid User',
-                
-            ];
-            return response($response);
-        }
-
         //check password verification bcrypt
-        $isPassword = password_verify($fields['password'],$user->password); 
-        if (!$isPassword) {
+        $isPassword = Hash::check($fields['password'],$user->password);
+        if (!$isPassword || !$user) {
             $response=[
                 'statusCode'=>401,
-                'message'=>'Invalid Password',
-                
+                'message'=>'Invalid Password or User',                
             ];
             return response($response);
         }
