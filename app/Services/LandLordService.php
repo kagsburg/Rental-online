@@ -4,14 +4,14 @@
 namespace App\Services;
 
 use App\Http\Resources\UserResource;
-use App\Http\Resources\LandlordResource;
+
 use App\Http\Resources\UserCollection;
-use App\Models\LandLord;
+
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Hash;
+
 
 class LandLordService
 {

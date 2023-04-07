@@ -6,6 +6,7 @@ use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\PropertyController; 
 use App\Http\Controllers\PropertyUnitController; 
 use App\Http\Controllers\PropertyStatusController; 
+use App\Http\Controllers\TenantController; 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LeaseController;
 use App\Http\Controllers\UserController;
@@ -27,10 +28,12 @@ Route::get('/status/{id}', [PropertyStatusController::class, 'get_Status']);//ge
 Route::delete('/status/{id}', [PropertyStatusController::class, 'deleteStatus']);//delete
 Route::put('/status/{id}', [PropertyStatusController::class, 'updateStatus']);//update
 Route::post('/status',[PropertyStatusController::class,'storeStatus']);//create
+//get all tenants
+Route::get('/tenants',[TenantController::class,'getAllTenants']);
+
+Route::post('/tenants',[LeaseController::class,'AddNewLeases']);
 
 
-
-// Route::get('/landlord',[LandlordResource::class,all()]);
     // property_type routes
 Route::get('/types', [PropertyTypeController::class, 'getAlltype']);//get all
 Route::get('/types/{id}', [PropertyTypeController::class, 'getType']);//get with id
@@ -51,12 +54,9 @@ Route::post('/types',[PropertyTypeController::class,'storeType']);//create
  Route::delete('/propertyunit/{id}', [PropertyUnitController::class, 'deletePropertyUnit']);//delete
  Route::put('/propertyunit/{id}', [PropertyUnitController::class, 'updatePropertyUnit']);//update
  Route::post('/propertyunit',[PropertyUnitController::class,'createPropertyUnit']);//create
-// Route::group(['middleware'=>['auth:sanctum']]), function () {
-    //login route
-    Route::post('/login',[AuthController::class,'login']);
-   // Route::post('/landlord/',[LandlordController::class,'storeLandLord']);
+ Route::get('/property_unit/{property_id}', [PropertyUnitController::class, 'getUnitsPerProperty']);//get all property units per given property
+Route::post('/signin',[AuthController::class,'login']);
 
-// };
 Route::get('/landlord', [LandlordController::class, 'getLandLords']);
 Route::get('/landlord/{landLord}', [LandlordController::class, 'getLandLord']);
 Route::delete('/landlord/{id}', [LandlordController::class, 'deleteLandLord']);

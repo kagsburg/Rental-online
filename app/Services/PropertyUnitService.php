@@ -34,6 +34,10 @@ class PropertyUnitService
             return (new UserResource($user))->response()->setStatusCode(Response::HTTP_CREATED);
 
     }
+    //get all property units per given property
+    public function getUnitsPerProperty(Request $request, $property_id){
+        return new PropertyUnitCollection(PropertyUnit::where('property_id',$request->property_id)->get());
+    }
     //getting all property units
     public function GetAllUnits ($request){
          //getting landlord id from token

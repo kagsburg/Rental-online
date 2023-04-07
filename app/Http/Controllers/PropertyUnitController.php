@@ -39,4 +39,8 @@ class PropertyUnitController extends Controller
         public function deletePropertyUnit(PropertyUnit $id){
             return $this ->propertyUnitService->DestroyUnit($id);
         }
+        //get all property units per given property
+        public function getUnitsPerProperty(Request $request, $property_id){
+            return $this->propertyUnitService->getUnitsPerProperty($request,$property_id);
+        }
 }

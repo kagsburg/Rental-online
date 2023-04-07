@@ -9,6 +9,7 @@ use App\Models\Lease;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Laravel\Sanctum\PersonalAccessToken;
+use App\Services\TenantService;
 
 class LeaseService
 {
@@ -26,7 +27,31 @@ class LeaseService
         'lease_start'=>'required',
         'lease_end'=>'required',            
         ]);
-        $lease =Lease::create($request->all());
+        // return $request->all();
+        //if validation is successful
+        if ($request->hasFile('document')) {
+            $doc= $request->file('document')->store('document');
+        }else{
+            $doc = null;
+        }
+
+        $lease = Lease::create([
+            'type_id'=>$request->type_id,
+            'unit_id'=>$request->unit_id,
+            'tenant_id'=>$request->tenant_id,
+            'status'=>$request->status,
+            'lease_start'=>$request->lease_start,
+            'lease_end'=>$request->lease_end,
+            'document'=>$doc,
+            // 'created_by'=>$request->created_by,
+        ]);
+        $tenant = new TenantService();
+        $tenant->addNewTenantLeases($request);
+        // if ($request->hasFile('lease_doc')) {
+           
+        //     $formfeilds['document'] = $request->file('lease_doc')->store('lease_doc');
+        // }
+        // $lease =Lease::create($formfeilds);
             return (new LeaseResource($lease))->response()->setStatusCode(Response::HTTP_CREATED);
 
     }
