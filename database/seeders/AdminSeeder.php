@@ -17,9 +17,9 @@ class AdminSeeder extends Seeder
         //
         User::create([
             'Full_name' => 'kaganzi timothy',
-            'Email' =>'kagsburg@mail.com',
+            'Email' =>'kagsburg@gmail.com',
             'role_id'=> 1,
-            'password' => '$2y$10$0mK5UcIKrL8.tL26QRgRVuMblo6Ku4gZunHdO.C8n.01l1LhkrHni',
+            'password' => Hash::make('12345678'),
         ]);
     }
 }
