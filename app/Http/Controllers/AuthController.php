@@ -28,10 +28,12 @@ class AuthController extends Controller
             return response($response);
         }
 
-        if(!Hash::check($fields['password'],$user->password)){
+        //check password
+        $isPassword = Hash::check($fields['password'],$user->password);
+        if (!$isPassword) {
             $response=[
                 'statusCode'=>401,
-                'message'=>'Invalid Password or Email',
+                'message'=>'Invalid Password',
                 
             ];
             return response($response);
