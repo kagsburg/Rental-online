@@ -28,8 +28,8 @@ class AuthController extends Controller
             return response($response);
         }
 
-        //check password
-        $isPassword = Hash::check($fields['password'],$user->password);
+        //check password verification bcrypt
+        $isPassword = password_verify($fields['password'],$user->password); 
         if (!$isPassword) {
             $response=[
                 'statusCode'=>401,
